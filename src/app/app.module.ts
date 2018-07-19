@@ -12,6 +12,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ProductComponent } from './components/product/product.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star/star.component';
+import { OrderComponent } from './components/order/order.component';
 
 const appRoutes: Routes = [
   { path: '', component: UserComponent },
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     AboutComponent,
     ProductComponent,
     ConvertToSpacesPipe,
-    StarComponent
+    StarComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
