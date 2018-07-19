@@ -40,7 +40,7 @@ export class UserComponent implements OnInit {
     this.hobbies.unshift(h);
     return false;
   }
-
+ 
   deleteHobby(h, i) {
     this.hobbies.splice(i, 1);
     // console.log(h, i);
