@@ -1,0 +1,9 @@
+<div class="crop" 
+  [style.width.px]="starWidth"
+  [title]="preciseRating">
+  <div>
+    <span *ngFor="let star of starList">
+      <i class="{{star}}"></i>
+    </span>
+  </div>
+</div>

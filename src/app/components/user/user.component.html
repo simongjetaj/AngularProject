@@ -1,0 +1,62 @@
+<div class="container-fluid">
+
+  <h2 *ngIf="greeting" class="mt-4">Hello, {{name}}!</h2>
+
+  <ul>
+    <li>Age: {{age}}</li>
+    <li>Email: {{email}}</li>
+    <li>{{address.street}} {{address.city}}, {{address.state}}</li>
+  </ul>
+
+  <input type="button" value="Edit User" (click)="toggleEdit()">
+
+  <div *ngIf="isEdit">
+    <h1>Edit User</h1>
+    <form>
+      <div>
+        <label for="name">Name: </label><br>
+        <input type="text" id="name" [(ngModel)]="name" name="name">
+      </div>
+      <div>
+        <label for="age">Age: </label><br>
+        <input type="number" id="age" [(ngModel)]="age" name="age">
+      </div>
+      <div>
+        <label for="email">Email: </label><br>
+        <input type="email" id="email" [(ngModel)]="email" name="email">
+      </div>
+      <div>
+        <label for="street">Street: </label><br>
+        <input type="text" id="street" [(ngModel)]="address.street" name="street">
+      </div>
+      <div>
+        <label for="city">City: </label><br>
+        <input type="text" id="city" [(ngModel)]="address.city" name="city">
+      </div>
+      <div>
+        <label for="state">State: </label><br>
+        <input type="text" id="state" [(ngModel)]="address.state" name="state">
+      </div>
+    </form>
+  </div>
+
+  <h3>Hobbies</h3>
+  <form (submit)="addHobby(hobby.value, i)">
+    <div>
+      <label for="hobby">Create a Hobby:</label><br>
+      <input type="text" #hobby id="hobby">
+    </div>
+  </form>
+  <ul>
+    <li *ngFor="let hobby of hobbies; let i = index">
+      {{i+1}}: {{hobby}} <button (click)='deleteHobby(hobby, i)'>X</button>
+    </li>
+  </ul>
+
+  <h3>Posts</h3>
+  <div *ngFor="let post of posts">
+    <h4>{{post.title}}</h4>
+    <p>{{post.body}}</p>
+  </div>
+
+</div>

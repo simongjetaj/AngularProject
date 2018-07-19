@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <div class="card">
+    <h3 class="text-center mt-2">{{pageTitle}}</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="align-self-center">Filter by:</div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" #product id="product" [(ngModel)]="listFilter" (input)='filterProducts(product.value)'>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <p class="pl-1">Filtered by: <strong><em><u>{{listFilter}}</u></em></strong></p>
+      </div>
+    </div>
+
+    <div class="table-responsive" *ngIf="products && products.length">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr class="bg-light text-dark">
+            <th scope="col">
+              <button class="btn btn-light" (click)='toggleImage()'>
+                  <i class="{{ showImage ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></i> {{ showImage ? 'Hide' : 'Show' }} Image
+              </button>
+            </th>
+            <th scope="col" class="align-middle">Product</th>
+            <th scope="col" class="align-middle">Code</th>
+            <th scope="col" class="align-middle">Available</th>
+            <th scope="col" class="align-middle">Price</th>
+            <th scope="col" class="align-middle">5 Star Rating</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let product of filteredProducts">
+            <td>
+              <img *ngIf="showImage" [src]='product.imageUrl' 
+              [title]='product.productName' 
+              [alt]='product.productName' 
+              [style.width.px]='imageWidth'
+              [style.margin.px]='imageMargin'></td>
+            <td class="align-middle">{{ product.productName }}</td>
+            <td class="align-middle">{{ product.productCode | lowercase | convertToSpaces: '-' }}</td>
+            <td class="align-middle">{{ product.releaseDate }}</td>
+            <td class="align-middle">{{ product.price | currency:'USD':'symbol':'1.2-2' }}</td>
+            <td class="align-middle"><app-star [preciseRating]='product.starRating'></app-star></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
