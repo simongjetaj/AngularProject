@@ -24,9 +24,9 @@ export class UserComponent implements OnInit {
     this.age = 21;
     this.email = "gjetajsimon@gmail.com";
     this.address = {
-      street: "Osmet",
-      city: "Tirane",
-      state: "Albania"
+      street: "lorem",
+      city: "New York",
+      state: "USA"
     };
     this.hobbies = ['Developing', 'Boxing', 'Listening to music'];
     this.greeting = true; // hello, 1 
