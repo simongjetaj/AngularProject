@@ -21,7 +21,7 @@
         <thead>
           <tr class="bg-light text-dark">
             <th scope="col">
-              <button class="btn btn-light" (click)='toggleImage()'>
+              <button class="btn btn-light " (click)='toggleImage()'>
                   <i class="{{ showImage ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></i> {{ showImage ? 'Hide' : 'Show' }} Image
               </button>
             </th>
@@ -46,7 +46,7 @@
                 [style.width.px]='imageWidth'
                 [style.margin.px]='imageMargin'></td>
               <td class="align-middle">
-                <a [routerLink]="['/product', product.productId]">
+                <a [routerLink]="['/products', product.productId]">
                   {{ product.productName }}
                 </a>
               </td>

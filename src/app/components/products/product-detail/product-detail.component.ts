@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'; 
-import { IProduct } from '../product';
-import { ProductService } from '../product.service';
+import { IProduct } from '../products';
+import { ProductService } from '../products.service';
 
 @Component({
   // selector: 'app-product-detail',
@@ -32,7 +32,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['/product']);
+    this.router.navigate(['/products']);
   }
 
 }

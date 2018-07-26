@@ -10,20 +10,21 @@ import { UserComponent } from './components/user/user.component';
 
 import { DataService } from './services/data.service';
 import { AboutComponent } from './components/about/about.component';
-import { ProductComponent } from './components/product/product.component';
+import { ProductComponent } from './components/products/products.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star/star.component';
 import { OrderComponent } from './components/order/order.component';
-import { ProductDetailComponent } from './components/product/product-detail/product-detail.component';
-import { ProductDetailGuard } from './components/product/product-detail/product-detail.guard';
+import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
+import { ProductDetailGuard } from './components/products/product-detail/product-detail.guard';
 
 const appRoutes: Routes = [
-  { path: 'product', component: ProductComponent },
-  { path: 'product/:id', canActivate: [ProductDetailGuard], component: ProductDetailComponent },
-  { path: '', redirectTo: 'product', pathMatch: 'full' },
+  { path: 'products', component: ProductComponent },
+  { path: 'products/:id', canActivate: [ProductDetailGuard], component: ProductDetailComponent },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'order', component: OrderComponent },
+  { path: 'users', component: UserComponent },
   { path: 'about', component: AboutComponent },
-  { path: '**', redirectTo: 'product', pathMatch: 'full' }
+  { path: '**', redirectTo: 'products', pathMatch: 'full' }
 ];
 
 @NgModule({
