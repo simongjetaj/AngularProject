@@ -1,0 +1,12 @@
+.bullets {
+    list-style-type: none;
+}
+
+.inputWidth {
+    max-width: 60%;
+    min-width: 40%;
+}
+
+.inputHobbyWidth {
+    max-width: 40%;
+}

@@ -10,10 +10,10 @@ import { UserComponent } from './components/user/user.component';
 
 import { DataService } from './services/data.service';
 import { AboutComponent } from './components/about/about.component';
-import { ProductComponent } from './components/products/products.component';
+import { ProductComponent } from './components/products/product.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star/star.component';
-import { OrderComponent } from './components/order/order.component';
+import { OrderComponent } from './components/orders/order.component';
 import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
 import { ProductDetailGuard } from './components/products/product-detail/product-detail.guard';
 
@@ -21,7 +21,7 @@ const appRoutes: Routes = [
   { path: 'products', component: ProductComponent },
   { path: 'products/:id', canActivate: [ProductDetailGuard], component: ProductDetailComponent },
   { path: '', redirectTo: 'products', pathMatch: 'full' },
-  { path: 'order', component: OrderComponent },
+  { path: 'orders', component: OrderComponent },
   { path: 'users', component: UserComponent },
   { path: 'about', component: AboutComponent },
   { path: '**', redirectTo: 'products', pathMatch: 'full' }

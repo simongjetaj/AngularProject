@@ -1,62 +1,71 @@
 <div class="container-fluid">
+  
+  <div style="width: 60%; margin: 0 auto; text-align: center">
+    <h2 *ngIf="greeting" class="mt-4">Welcome, {{name}}!</h2>
 
-  <h2 *ngIf="greeting" class="mt-4">Hello, {{name}}!</h2>
+    <ul class="bullets">
+      <li>Age: {{age}}</li>
+      <li>Email: {{email}}</li>
+      <li>{{address.street}} {{address.city}}, {{address.state}}</li>
+    </ul>
 
-  <ul>
-    <li>Age: {{age}}</li>
-    <li>Email: {{email}}</li>
-    <li>{{address.street}} {{address.city}}, {{address.state}}</li>
-  </ul>
+    <input type="button" value="Edit User" (click)="toggleEdit()" class="btn btn-sm btn-warning mb-2">
 
-  <input type="button" value="Edit User" (click)="toggleEdit()">
-
-  <div *ngIf="isEdit">
-    <h1>Edit User</h1>
-    <form>
-      <div>
-        <label for="name">Name: </label><br>
-        <input type="text" id="name" [(ngModel)]="name" name="name">
-      </div>
-      <div>
-        <label for="age">Age: </label><br>
-        <input type="number" id="age" [(ngModel)]="age" name="age">
-      </div>
-      <div>
-        <label for="email">Email: </label><br>
-        <input type="email" id="email" [(ngModel)]="email" name="email">
-      </div>
-      <div>
-        <label for="street">Street: </label><br>
-        <input type="text" id="street" [(ngModel)]="address.street" name="street">
-      </div>
-      <div>
-        <label for="city">City: </label><br>
-        <input type="text" id="city" [(ngModel)]="address.city" name="city">
-      </div>
-      <div>
-        <label for="state">State: </label><br>
-        <input type="text" id="state" [(ngModel)]="address.state" name="state">
-      </div>
-    </form>
+    <div *ngIf="isEdit" class="bg-secondary rounded text-white p-5">
+    <h3>Edit User</h3>
+      <form>
+        <div>
+          <label for="name">Name: </label><br>
+          <input type="text" class="form-control mx-auto inputWidth" id="name" [(ngModel)]="name" name="name">
+        </div>
+        <div>
+          <label for="age">Age: </label><br>
+          <input type="number" class="form-control mx-auto inputWidth" id="age" [(ngModel)]="age" name="age">
+        </div>
+        <div>
+          <label for="email">Email: </label><br>
+          <input type="email" class="form-control mx-auto inputWidth" id="email" [(ngModel)]="email" name="email">
+        </div>
+        <div>
+          <label for="street">Street: </label><br>
+          <input type="text" class="form-control mx-auto inputWidth" id="street" [(ngModel)]="address.street" name="street">
+        </div>
+        <div>
+          <label for="city">City: </label><br>
+          <input type="text" class="form-control mx-auto inputWidth" id="city" [(ngModel)]="address.city" name="city">
+        </div>
+        <div>
+          <label for="state">State: </label><br>
+          <input type="text" class="form-control mx-auto inputWidth" id="state" [(ngModel)]="address.state" name="state">
+        </div>
+      </form>
   </div>
+</div>
 
-  <h3>Hobbies</h3>
+  <hr>
+  <h3 class="mt-3">Hobbies</h3>
   <form (submit)="addHobby(hobby.value, i)" #form>
     <div>
       <label for="hobby">Create a Hobby:</label><br>
-      <input type="text" #hobby id="hobby" [(ngModel)]="hobbyInput" name="hobbyInput">
+      <input type="text" class="form-control mb-3 inputHobbyWidth" #hobby id="hobby" [(ngModel)]="hobbyInput" name="hobbyInput">
     </div>
   </form>
-  <ul>
-    <li *ngFor="let hobby of hobbies; let i = index">
-      {{i+1}}: {{hobby}} <button (click)='deleteHobby(hobby, i)'>X</button>
+  <ul class="mb-5">
+    <li *ngFor="let hobby of hobbies; let i = index" class="mb-2">
+      {{i+1}}: {{hobby}} 
+      <button (click)='deleteHobby(hobby, i)' class="btn btn-xs btn-danger">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
     </li>
   </ul>
 
-  <h3>Posts</h3>
-  <div *ngFor="let post of posts">
-    <h4>{{post.title}}</h4>
-    <p>{{post.body}}</p>
+  <hr>
+  <h3 class="mt-5">Posts</h3>
+  <div *ngFor="let post of posts" class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{post.title}}</h5>
+      <p class="card-text">{{post.body}}</p>
+    </div>
   </div>
 
 </div>
