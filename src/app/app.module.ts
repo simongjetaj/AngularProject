@@ -14,13 +14,16 @@ import { ProductComponent } from './components/product/product.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star/star.component';
 import { OrderComponent } from './components/order/order.component';
+import { ProductDetailComponent } from './components/product/product-detail/product-detail.component';
+import { ProductDetailGuard } from './components/product/product-detail/product-detail.guard';
 
 const appRoutes: Routes = [
-  { path: '', component: UserComponent },
-  { path: 'home', component: UserComponent },
-  { path: 'about', component: AboutComponent },
   { path: 'product', component: ProductComponent },
-  { path: 'order', component: OrderComponent }
+  { path: 'product/:id', canActivate: [ProductDetailGuard], component: ProductDetailComponent },
+  { path: '', redirectTo: 'product', pathMatch: 'full' },
+  { path: 'order', component: OrderComponent },
+  { path: 'about', component: AboutComponent },
+  { path: '**', redirectTo: 'product', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -31,7 +34,8 @@ const appRoutes: Routes = [
     ProductComponent,
     ConvertToSpacesPipe,
     StarComponent,
-    OrderComponent
+    OrderComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
