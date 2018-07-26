@@ -14,6 +14,7 @@ export class UserComponent implements OnInit {
   hobbies: string[];
   greeting: any;
   posts:   Post[];
+  hobbyInput: string;
   isEdit:  boolean = false;
 
   // whenever u want to use a service you have to inject it as a dependency
@@ -38,6 +39,7 @@ export class UserComponent implements OnInit {
 
   addHobby(h) {
     this.hobbies.unshift(h);
+    this.hobbyInput = '';
     return false;
   }
  

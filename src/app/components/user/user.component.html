@@ -41,10 +41,10 @@
   </div>
 
   <h3>Hobbies</h3>
-  <form (submit)="addHobby(hobby.value, i)">
+  <form (submit)="addHobby(hobby.value, i)" #form>
     <div>
       <label for="hobby">Create a Hobby:</label><br>
-      <input type="text" #hobby id="hobby">
+      <input type="text" #hobby id="hobby" [(ngModel)]="hobbyInput" name="hobbyInput">
     </div>
   </form>
   <ul>
