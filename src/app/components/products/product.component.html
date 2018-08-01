@@ -5,14 +5,20 @@
       <div class="row">
         <div class="align-self-center">Filter by:</div>
         <div class="col-md-4">
-            <input type="text" class="form-control" #product id="product" [(ngModel)]="listFilter" (input)='filterProducts(product.value)'>
+          <input type="text" class="form-control" #product id="product" [(ngModel)]="listFilter" (input)='filterProducts(product.value)'>
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-6">
-        <p class="pl-1">Filtered by: <strong><em><u>{{listFilter}}</u></em></strong></p>
+        <p class="pl-1">Filtered by:
+          <strong>
+            <em>
+              <u>{{listFilter}}</u>
+            </em>
+          </strong>
+        </p>
       </div>
     </div>
 
@@ -22,7 +28,7 @@
           <tr class="bg-light text-dark">
             <th scope="col">
               <button class="btn btn-light " (click)='toggleImage()'>
-                  <i class="{{ showImage ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></i> {{ showImage ? 'Hide' : 'Show' }} Image
+                <i class="{{ showImage ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></i> {{ showImage ? 'Hide' : 'Show' }} Image
               </button>
             </th>
             <th scope="col" class="align-middle">Product</th>
@@ -38,13 +44,11 @@
           <div *ngIf="filteredProducts.length > 0; then products else noProducts"></div>
 
           <ng-template #products>
-            <tr *ngFor="let product of filteredProducts">
+            <tr *ngFor="let product of filteredProducts | paginate: { itemsPerPage: 2, currentPage: p }">
               <td>
-                <img *ngIf="showImage" [src]='product.imageUrl' 
-                [title]='product.productName' 
-                [alt]='product.productName' 
-                [style.width.px]='imageWidth'
-                [style.margin.px]='imageMargin'></td>
+                <img *ngIf="showImage" [src]='product.imageUrl' [title]='product.productName' [alt]='product.productName' [style.width.px]='imageWidth'
+                  [style.margin.px]='imageMargin'>
+              </td>
               <td class="align-middle">
                 <a [routerLink]="['/products', product.productId]">
                   {{ product.productName }}
@@ -53,8 +57,11 @@
               <td class="align-middle">{{ product.productCode | lowercase | convertToSpaces: '-' }}</td>
               <td class="align-middle">{{ product.releaseDate }}</td>
               <td class="align-middle">{{ product.price | currency:'USD':'symbol':'1.2-2' }}</td>
-              <td class="align-middle"><app-star [preciseRating]='product.starRating'></app-star></td>
+              <td class="align-middle">
+                <app-star [preciseRating]='product.starRating'></app-star>
+              </td>
             </tr>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
           </ng-template>
 
           <ng-template #noProducts>
